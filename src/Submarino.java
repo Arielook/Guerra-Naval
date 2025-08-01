@@ -10,12 +10,18 @@ public class Submarino extends Navio {
         boolean sePudo;
         Posicion pos1, pos2, pos3;
         switch(direccion) {
-            'U' :   pos1 = centro.getL();
-                    pos2 = centro.getU();
-                    pos3 = centro.getR(); break;
-            'R' :   pos1 = centro.getU();
-                    pos2 = centro.getL();
-                    pos3 = centro.getD();
+            case 'U' :  pos1 = centro.getL();
+                        pos2 = centro.getU();
+                        pos3 = centro.getR(); break;
+            case 'R' :  pos1 = centro.getU();
+                        pos2 = centro.getR();
+                        pos3 = centro.getD(); break;
+            case 'D' :  pos1 = centro.getR();
+                        pos2 = centro.getD();
+                        pos3 = centro.getL(); break;
+            default :   pos1 = centro.getD();
+                        pos2 = centro.getL();
+                        pos3 = centro.getU();
         }
         if(plano.sePuedeUsar(centro) &&
             plano.sePuedeUsar(pos1) &&
@@ -28,10 +34,10 @@ public class Submarino extends Navio {
                 partes.add(new Parte(pos2));
                 partes.add(new Parte(pos3));
 
-                plano.setParte(this, centro);
-                plano.setParte(this, pos1);
-                plano.setParte(this, pos2);
-                plano.setParte(this, pos3);
+                plano.setParteDe(this, centro);
+                plano.setParteDe(this, pos1);
+                plano.setParteDe(this, pos2);
+                plano.setParteDe(this, pos3);
         } else {
             sePudo = false;
         }
